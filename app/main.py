@@ -1,3 +1,4 @@
+import math
 from __future__ import annotations
 
 class Vector:
@@ -35,4 +36,22 @@ class Vector:
             end[0] - start[0],
             end[1] - start[1]
         )
+
+    def get_lenght(self) -> float:
+        return math.sqrt(self.x ** 2, self.y ** 2)
+
+    def get_normalized(self) -> Vector:
+        comprimento = self.get_length()
+
+        if comprimento == 0:
+            raise ValueError("Não é possível normalizar um vetor nulo.")
+    
+        return Vector(
+            self.x / comprimento,
+            self.y / comprimento
+        )
+
+    def get_angle(self):
+        angle = math.atan2(self.y, self.x)
+        return math.degrees(angle)
     
